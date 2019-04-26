@@ -1,4 +1,4 @@
-<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="~/App_MasterPages/layout.Master.cs" Inherits="mojoPortal.Web.layout" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="~/App_MasterPages/layout.Master.cs" Inherits="mojoPortal.Web.layout" %>
 <!DOCTYPE html>
 <html class="htmlclass">
 	<head id="Head1" runat="server">
@@ -15,6 +15,7 @@
 		<portal:SkinFolderCssFile runat="server" CssFileName="js/vendors/smartmenus/jquery.smartmenus.bootstrap.css" />
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
 		<portal:StyleSheetCombiner id="StyleSheetCombiner" runat="server" IncludeJQueryUI="false" UseIconsForAdminLinks="false" EnableNonClickablePageLinks="true" QtFileCssIsInMainCss="false" IncludeColorBox="true" />
+        <link rel="stylesheet" href="css/nnitStyle.css">
 
 		<!-- Scripts -->
 		<portal:ScriptLoader id="ScriptLoader1" runat="server" AssumejQueryIsLoaded="true" AssumejQueryUiIsLoaded="true" IncludeColorBox="false" IncludeSimpleFaq="true" IncludejQueryAccordion="true" />
@@ -25,6 +26,16 @@
 		<portal:SkinFolderCssFile runat="server" CssFileName="js/vendors/jquery/jquery-ui-1.12.1/jquery-ui.min.css" LinkFormat="<script>window.jQuery.ui || document.write('<link rel=\'stylesheet\' href=\'{0}\'>')</script>" RenderInPlace="true" />
 		<!-- Change JQueryUI plugin names to fix name collision with Bootstrap. -->
 		<script>$.widget.bridge('uiTooltip', $.ui.tooltip);$.widget.bridge('uiButton', $.ui.button);</script>
+
+        <style type="text/css">
+
+        nnit-navigate {
+    position: absolute;
+    left: 100px;
+    top: 150px
+}
+    </style>
+
 	</head>
 	<body class="pagebody" id="Body" runat="server">
 		<portal:FacebookSdk id="fbsdk" runat="server" />
@@ -57,20 +68,29 @@
 								<% } %>
 							</div>
 
-							<div class="collapse navbar-collapse fb-parent fb-row fb-j-end fb-ai-center fb-sm-66" id="site-menu">
+                            <div class="nnit-navigate">
+                            <div id="nnit-navigate-bar" class="nnit-navigate-info">|&nbsp;&nbsp;&nbsp;&nbsp;市场活动&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;新闻中心&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;联系我们&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;关于我们</div>
+							<div class="nnit-navigate-search">
+                                <portal:SearchInput id="SearchInput1" LinkOnly="false" RenderAsListItem="true"  runat="server"  />
+							</div>
+                                
+                            </div>
+
+						</div>
+					</nav>
+				</header>
+
+                <div class="collapse navbar-collapse fb-parent fb-row fb-j-end fb-ai-center fb-sm-66" id="site-menu">
 								<portal:SiteMenu id="SiteMenu1" runat="server" MenuSkinId="MainMenu" UseFlexMenu="true" />
 								<%-- Below is an optional cart-link that sits by the menu, but only works if the webstore add-on is installed --%>
 								<%-- <span class="flex-cart-inline">
 									<webstore:FlexCartLink id="cartlink1" runat="server" PageId="4" ModuleId="5" ModuleGuid="f4260a9f-d170-4e4a-a8c8-baf0bcbc22b6" IncludeItemCount="true" IncludeCartTotal="true" LiteralTopMarkup="<span class='topnavitem cartnav'><span class='ui-icon ui-icon-cart'></span>" LiteralBottomMarkup="</span>" CssClass="sitelink" />
 								</span> --%>
 							</div>
-                            <portal:SearchInput id="SearchInput1" LinkOnly="false" RenderAsListItem="true"  runat="server" />
-						</div>
-					</nav>
-				</header>
-
 
 				<main class="main-content">
+                    
+
 					<portal:LayoutPanel id="divAlt1" runat="server" SkinID="TopPane">
 						<asp:ContentPlaceHolder id="altContent1" runat="server"></asp:ContentPlaceHolder>
 					</portal:LayoutPanel>
