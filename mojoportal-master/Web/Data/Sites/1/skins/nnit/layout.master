@@ -27,15 +27,6 @@
 		<!-- Change JQueryUI plugin names to fix name collision with Bootstrap. -->
 		<script>$.widget.bridge('uiTooltip', $.ui.tooltip);$.widget.bridge('uiButton', $.ui.button);</script>
 
-        <style type="text/css">
-
-        nnit-navigate {
-    position: absolute;
-    left: 100px;
-    top: 150px
-}
-    </style>
-
 	</head>
 	<body class="pagebody" id="Body" runat="server">
 		<portal:FacebookSdk id="fbsdk" runat="server" />
@@ -62,17 +53,48 @@
 								</button>
 
 								<% if (siteSettings.Logo != "" && siteSettings.Logo != "blank.gif") { %>
-								<portal:SiteLogo runat="server" ImageCssClass="site-logo" LinkCssClass="navbar-brand navbar-logo" />
+								<portal:SiteLogo runat="server" ImageCssClass="site-logo" LinkCssClass="navbar-brand navbar-logo nnit-log" />
 								<% } else { %>
 									<portal:SiteTitle runat="server" SkinId="navbar-brand" UseLink="true" />
 								<% } %>
 							</div>
 
                             <div class="nnit-navigate">
-                            <div id="nnit-navigate-bar" class="nnit-navigate-info">|&nbsp;&nbsp;&nbsp;&nbsp;市场活动&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;新闻中心&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;联系我们&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;关于我们</div>
+                            <div id="nnit-navigate-bar" class="nnit-navigate-info nnit-languagenav-on">
+                                
+                              
+						            <span >
+							            |&nbsp;&nbsp;&nbsp;&nbsp;<a href="Events.html">市场活动</a>&nbsp;&nbsp;&nbsp;&nbsp;
+						            </span>
+						            <span>
+							            |&nbsp;&nbsp;&nbsp;&nbsp;<a href="News&amp;Media.html">新闻中心</a>&nbsp;&nbsp;&nbsp;&nbsp;
+						            </span>
+						            <span>
+							            |&nbsp;&nbsp;&nbsp;&nbsp;<a href="Contact.html">联系我们</a>&nbsp;&nbsp;&nbsp;&nbsp;
+						            </span>
+						            <span>
+							            |&nbsp;&nbsp;&nbsp;&nbsp;<a href="About.html">关于我们</a>&nbsp;&nbsp;&nbsp;&nbsp;
+						            </span>
+					            
+
+                            </div>
 							<div class="nnit-navigate-search">
                                 <portal:SearchInput id="SearchInput1" LinkOnly="false" RenderAsListItem="true"  runat="server"  />
 							</div>
+                            
+                             <div class="nnit-navigate-info nnit-languagenav-on">
+                                
+						            <span >
+							            <a href="index.html">Chinese</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						            </span>
+						            <span  >
+							            <a href="http://www.nnit.dk/">Danish</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						            </span>
+						            <span  >
+							            <a href="http://www.nnit.com/">English</a>
+						            </span>
+					            
+                             </div> 
                                 
                             </div>
 
@@ -132,7 +154,92 @@
 						<div class="col-sm-6 text-xs-center text-sm-right">
 							<portal:LoginLink id="LoginLink" runat="server" RenderAsListItem="false" />
 						</div>
+
 					</div>
+
+                    <div class="nnit-footer1">
+                        
+				        <span style="font-weight:bold">
+					        NNIT :
+				        </span>
+				        <span class="nnit-footer_locations">
+					        <a href="http://www.nnit.dk/">丹麦</a>
+				        </span>
+				        <span class="nnit-footer_locations">
+					        <a href="http://www.nnit.com/china">中国</a>
+				        </span>
+				        <span class="nnit-footer_locations">
+					        <a href="http://www.nnit.com/philippines">菲律宾</a>
+				        </span>
+				        <span class="nnit-footer_locations">
+					        <a href="http://www.nnit.com/czech-republic">捷克共和国</a>
+				        </span>
+				        <span class="nnit-footer_locations">
+					        <a href="http://www.nnit.com/switzerland">瑞士</a>
+				        </span>
+				        <span class="nnit-footer_locations">
+					        <a href="http://www.nnit.com/us">美国</a>
+				        </span>
+				
+                        <span class="nnit-footer_locations" >
+					        <img src="Data/Sites/1/skins/nnit/img/footer/footer_vertical_grayline.png"  style="padding-right:20px">
+					        <a href="About/Cookies.html">Cookies</a>
+				        </span>
+
+				        <span class="nnit-footer_locations" >
+					       <img src="Data/Sites/1/skins/nnit/img/footer/footer_vertical_grayline.png" style="padding-right:20px">
+					        <a href="About/Disclaimer.html">免责声明</a>
+				        </span>
+			
+                    </div>
+
+                    <div id="footer_partners" class="nnit-footer-partners">
+			
+				        <span class="nnit-footer-icon">
+					        <a href="Partners/Partners_Cisco.html">
+						        <img src="Data/Sites/1/skins/nnit/img/footer/logo_cisco.png">
+                               
+					        </a>
+				        </span>
+                        
+				        <span class="nnit-footer-icon">
+					        <a href="Partners/Partners_EMC.html">
+						        <img src="Data/Sites/1/skins/nnit/img/footer/logo_emc.png">
+					        </a>
+				        </span>
+				        <span class="nnit-footer-icon">
+					        <a href="Partners/Partners_HP.html">
+						        <img src="Data/Sites/1/skins/nnit/img/footer/logo_hp.png">
+					        </a>
+				        </span>
+				        <span class="nnit-footer-icon">
+					        <a href="Partners/Partners_Microsoft.html">
+						        <img src="Data/Sites/1/skins/nnit/img/footer/logo_ms.png" >
+                                
+					        </a>
+				        </span>
+				        <span class="nnit-footer-icon">
+					        <a href="Partners/Partners_Oracle.html">
+						        <img src="Data/Sites/1/skins/nnit/img/footer/logo_oracle.png">
+					        </a>
+				        </span>
+				        <span class="nnit-footer-icon">
+					        <a href="Partners/Partners_SAP.html">
+						        <img src="Data/Sites/1/skins/nnit/img/footer/logo_sap.png">
+					        </a>
+				        </span>
+				        <span class="nnit-footer-icon">
+					        <a href="Partners/Partners_aws.html">
+						        <img src="Data/Sites/1/skins/nnit/img/footer/logo_aws.png">
+					        </a>
+				        </span>
+			
+		            </div>
+
+                    <div class="nnit-footer-copyright" >&copy;<%= DateTime.Now.Year.ToString() %> <portal:CompanyNameLiteral id="CompanyNameLiteral1" runat="server" /> - 天津市南开区南京路今晚大厦A座2001 - 86 022 58856666 - 津ICP备13002844号</div>
+                    <div class="nnit-footer-recordcode">
+			            <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12010402000495" target="_blank"><i></i>津公网安备 12010402000495号</a>
+		            </div>
 					<br>
 				</div>
 			</footer>

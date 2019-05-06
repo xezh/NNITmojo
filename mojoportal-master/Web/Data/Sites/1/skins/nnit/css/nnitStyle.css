@@ -1,6 +1,5 @@
 ﻿.nnit-navigate {
-    float:right;
-    
+    float:right; 
 }
 
 .nnit-navigate-info {
@@ -8,11 +7,57 @@
     color: #7D7D7D;
     font-weight: bold;
     text-decoration: none;
-    height: 60px;
+    height: 70px;
+    width:800px;
     margin-top: 20px;
     margin-right:0px;
+    text-align:right;
 }
 
 .nnit-navigate-search {
     margin-right: 0px;
+    text-align:right;
+    height:50px;
+}
+
+.nnit-languagenav-on a {
+    color: #585858;
+    font-weight: bold;
+    text-decoration: none;
+}
+.nnit-log{
+    margin-top:-40px;
+}
+.nnit-footer1 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    position: relative;
+    padding-left: 260px;
+    color: #7D7D7D;
+}
+.nnit-footer_locations {
+    padding-left: 20px;
+}
+
+.nnit-footer-copyright {
+    color: #7D7D7D;
+    margin-top: 20px;
+    padding-left: 200px;
+}
+.nnit-footer-partners {
+    padding-left: 100px; 
+    padding-top:30px;
+}
+.nnit-footer-icon{
+    padding-left:35px;
+}
+.nnit-footer-recordcode {
+    color: #7D7D7D;
+    display: inline-block;
+    background-image: url(../img/footer/recordicon.png);
+    background-repeat: no-repeat;
+    background-position: 0px 10px;
+    margin-left:450px;
+    padding-left:25px;
+    padding-top:10px;
 }
