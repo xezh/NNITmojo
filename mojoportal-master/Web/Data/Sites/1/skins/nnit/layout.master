@@ -36,6 +36,7 @@
 			<asp:SiteMapDataSource id="SiteMapData" runat="server" ShowStartingNode="false" />
 			<asp:SiteMapDataSource id="PageMapDataSource" runat="server" ShowStartingNode="false" />
 			<asp:SiteMapDataSource id="ChildPageSiteMapData" runat="server" ShowStartingNode="false" />
+            <asp:SiteMapDataSource ID="level3datasource" runat="server" ShowStartingNode="false" />
 			<asp:ScriptManager id="ScriptManager1" EnablePageMethods="true" runat="server" EnableScriptGlobalization="true" EnableScriptLocalization="true" />
 
 			<!--#include file="includes/browsehappy.html"-->
@@ -102,12 +103,14 @@
 					</nav>
 				</header>
 
-                <div class="collapse navbar-collapse fb-parent fb-row fb-j-end fb-ai-center fb-sm-66" id="site-menu">
-								<portal:SiteMenu id="SiteMenu1" runat="server" MenuSkinId="MainMenu" UseFlexMenu="true" />
+                <div class="collapse navbar-collapse fb-parent fb-row fb-j-end fb-ai-center fb-sm-66" id="site-menu" style="padding-right:900px !important">
+							 	<portal:SiteMenu id="SiteMenu1" runat="server" MenuSkinId="MainMenu" UseFlexMenu="true" />
 								<%-- Below is an optional cart-link that sits by the menu, but only works if the webstore add-on is installed --%>
 								<%-- <span class="flex-cart-inline">
 									<webstore:FlexCartLink id="cartlink1" runat="server" PageId="4" ModuleId="5" ModuleGuid="f4260a9f-d170-4e4a-a8c8-baf0bcbc22b6" IncludeItemCount="true" IncludeCartTotal="true" LiteralTopMarkup="<span class='topnavitem cartnav'><span class='ui-icon ui-icon-cart'></span>" LiteralBottomMarkup="</span>" CssClass="sitelink" />
 								</span> --%>
+
+
 							</div>
 
 				<main class="main-content">
@@ -145,17 +148,9 @@
 
 
 			<footer class="foot">
-				<div class="container">
-					<hr>
-					<div class="row">
-						<div class="col-sm-6 text-xs-center text-sm-left">
-							<small>&copy; <%= DateTime.Now.Year.ToString() %> <portal:CompanyNameLiteral id="CompanyName1" runat="server" /></small>
-						</div>
-						<div class="col-sm-6 text-xs-center text-sm-right">
-							<portal:LoginLink id="LoginLink" runat="server" RenderAsListItem="false" />
-						</div>
-
-					</div>
+				<div class="container nnit-footer-main">
+					
+                   
 
                     <div class="nnit-footer1">
                         
@@ -190,6 +185,10 @@
 					       <img src="Data/Sites/1/skins/nnit/img/footer/footer_vertical_grayline.png" style="padding-right:20px">
 					        <a href="About/Disclaimer.html">免责声明</a>
 				        </span>
+                        <span>
+                            <img src="Data/Sites/1/skins/nnit/img/footer/footer_vertical_grayline.png" style="padding-right:20px">
+                            <portal:LoginLink id="LoginLink" runat="server" RenderAsListItem="false" />
+                        </span>
 			
                     </div>
 
@@ -241,6 +240,7 @@
 			            <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12010402000495" target="_blank"><i></i>津公网安备 12010402000495号</a>
 		            </div>
 					<br>
+                    
 				</div>
 			</footer>
 		</form>

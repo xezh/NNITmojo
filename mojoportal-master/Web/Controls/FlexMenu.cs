@@ -474,18 +474,116 @@ namespace mojoPortal.Web.UI
             
         }
 
+        /// <summary>
+        /// NNIT style menu dropdown
+        /// </summary>
+        /// <param name="writer"></param>
+        /// <param name="mojoNode"></param>
+        /// <param name="renderDivider"></param>
+        /// <param name="nodePos"></param>
+        private void RenderNode(HtmlTextWriter writer, mojoSiteMapNode mojoNode, bool renderDivider, int nodePos)
+        {
+            if (!ShouldRender(mojoNode)) { return; }
 
-        
+            writer.Write("<div class='nnit-dropdown-menu");
+
+            // writer.Write(BuildLiClass(mojoNode));
+            writer.Write("'>");
+
+            writer.Write("<a");
+            writer.Write(BuildAnchorClass(mojoNode));
+            if (mojoNode.OpenInNewWindow)
+            {
+                writer.Write(" target='_blank'");
+            }
+            if (mojoNode.LinkRel.Length > 0)
+            {
+                writer.Write(" rel='" + mojoNode.LinkRel + "'");
+            }
+
+            if (mojoNode.IsClickable || (RenderHrefWhenUnclickable && !mojoNode.IsClickable))
+            {
+                writer.Write(" href='" + FormatUrl(mojoNode) + "'>");
+            }
+            else
+            {
+                writer.Write(">");
+            }
+
+            if ((AnchorInnerHtmlTop.Length > 0) && (AnchorInnerHtmlBottom.Length > 0))
+            {
+                writer.Write(AnchorInnerHtmlTop);
+            }
+
+            writer.Write(mojoNode.Title);
+
+            if ((AnchorInnerHtmlTop.Length > 0) && (AnchorInnerHtmlBottom.Length > 0))
+            {
+                writer.Write(AnchorInnerHtmlBottom);
+            }
+
+            writer.Write("</a>");
+
+            if ((RenderDescription) && (mojoNode.MenuDescription.Length > 0))
+            {
+                writer.Write("<span");
+                if (DescriptionCssClass.Length > 0)
+                {
+                    writer.Write(" class='" + DescriptionCssClass + "'");
+                }
+                writer.Write(">");
+                writer.Write(mojoNode.MenuDescription);
+                writer.Write("</span>");
+            }
+
+            //if (mojoNode.ChildNodes.Count > 0)
+            if (HasVisibleChildNodes(mojoNode))
+            {
+                if (ChildContainerElement.Length > 0)
+                {
+                    writer.Write("<" + ChildContainerElement);
+                    if (ChildContainerCssClass.Length > 0)
+                    {
+                        writer.Write(" class='" + ChildContainerCssClass + "'");
+                    }
+                    writer.Write(">");
+                }
+
+                RenderChildNodes(writer, mojoNode);
+
+                if (ChildContainerElement.Length > 0)
+                {
+                    writer.Write("</" + ChildContainerElement + ">");
+                }
+            }
+
+            writer.Write("</div>");
+
+            if (renderDivider)
+            {
+                writer.Write("<" + DividerElement);
+                if (!String.IsNullOrEmpty(DividerCssClass))
+                {
+                    writer.Write(" class='" + DividerCssClass + "'");
+                }
+                writer.Write("></" + DividerElement + ">");
+            }
+        }
+
+
 
         private void RenderChildNodes(HtmlTextWriter writer, SiteMapNode node)
         {
             writer.Write("<ul");
 
+            // remove original class 
             writer.Write(BuildUlClass((mojoSiteMapNode)node));
 
             writer.Write(">");
-           
-            
+
+            // backgroud DIV section
+            writer.Write("<div class='nnit-menu-div'>");
+
             int itemsAdded = 0;
             int trueItemsAdded = 0;
             int nodePos = 0;
@@ -498,7 +596,8 @@ namespace mojoPortal.Web.UI
                 if (!ShouldRender(mojoNode)) { continue; }
                 renderDivider = !String.IsNullOrEmpty(DividerElement) && (nodePos < startingNode.ChildNodes.Count);
                 //RenderNode(writer, mojoNode);
-                RenderNode(writer, mojoNode, renderDivider);
+                // render NNIT style menu
+                RenderNode(writer, mojoNode, renderDivider,nodePos);
 
                 nodePos += 1;
 
@@ -515,7 +614,7 @@ namespace mojoPortal.Web.UI
                     }
                 }
             }
-
+            writer.Write("</div>");
             writer.Write("</ul>");
         }
 

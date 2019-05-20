@@ -29,10 +29,9 @@
     margin-top:-40px;
 }
 .nnit-footer1 {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     position: relative;
-    padding-left: 260px;
     color: #7D7D7D;
 }
 .nnit-footer_locations {
@@ -42,11 +41,10 @@
 .nnit-footer-copyright {
     color: #7D7D7D;
     margin-top: 20px;
-    padding-left: 200px;
+    
 }
-.nnit-footer-partners {
-    padding-left: 100px; 
-    padding-top:30px;
+.nnit-footer-partners { 
+    padding-top:10px;
 }
 .nnit-footer-icon{
     padding-left:35px;
@@ -57,7 +55,37 @@
     background-image: url(../img/footer/recordicon.png);
     background-repeat: no-repeat;
     background-position: 0px 10px;
-    margin-left:450px;
-    padding-left:25px;
-    padding-top:10px;
+    margin-left:0px;
+}
+
+.nnit-menu-div {
+    width: 1100px;
+    height:600px;
+    background-color: #F6F4EF;
+    border: 1px solid black;
+    border-color: black;
+    margin-left:-20px;
+    padding-top:20px;
+}
+
+.dropdown-menu{
+    padding: 0px !important;
+}
+.nnit-dropdown-menu {
+    width: 366px;
+    height: 80px;
+    background-color: #F6F4EF;
+    font-size: 20px;
+    float: left;
+    text-align: center;
+    
+}
+.nnit-footer-main {
+    clear: both;
+    background-image: url(../img/footer/footer_background.png);
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 185px;
+    
+    text-align: center;
 }
