@@ -54,8 +54,9 @@
     display: inline-block;
     background-image: url(../img/footer/recordicon.png);
     background-repeat: no-repeat;
-    background-position: 0px 10px;
+    background-position: 0px 0px;
     margin-left:0px;
+    width:240px;
 }
 
 .nnit-menu-div {
@@ -81,11 +82,35 @@
     
 }
 .nnit-footer-main {
-    clear: both;
+    
     background-image: url(../img/footer/footer_background.png);
     background-repeat: no-repeat;
     width: 100%;
-    height: 185px;
-    
+    height: 185px;  
     text-align: center;
+    margin-top:40px;
+}
+
+.nnit-background{
+    background-image:url(../img/background.png);
+}
+.nnit-menu{
+    text-align:center;
+    padding-right:600px!important;
+}
+.nnit-rightbar-block{
+    margin-top:10px;
+}
+
+.nnit-rightbar-follow{
+    height: 180px;
+    background-image: url(../img/rightbar/makeyourmark_right2.png);
+    background-repeat:no-repeat;
+}
+
+.nnit-rightbar-follow ul li {
+    float:left;
+    list-style-type:none;
+    padding-left:10px;
+    padding-top:40px;
 }

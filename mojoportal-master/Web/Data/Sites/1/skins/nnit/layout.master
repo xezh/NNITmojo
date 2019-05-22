@@ -43,7 +43,7 @@
 			<!--#include file="includes/administration-drawer.html"-->
 			<div class="sitewrap">
 				<header class="head" role="banner">
-					<nav class="navbar navbar-default navbar-static-top navbar-site">
+					<nav class="navbar navbar-static-top navbar-site">
 						<div class="container flex-children flex-stretch">
 							<div class="navbar-header fb-parent fb-row fb-ai-center fb-j-start fb-sm-33">
 								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#site-menu" aria-expanded="false">
@@ -65,7 +65,7 @@
                                 
                               
 						            <span >
-							            |&nbsp;&nbsp;&nbsp;&nbsp;<a href="Events.html">市场活动</a>&nbsp;&nbsp;&nbsp;&nbsp;
+							            |&nbsp;&nbsp;&nbsp;&nbsp;<a href="marketing">市场活动</a>&nbsp;&nbsp;&nbsp;&nbsp;
 						            </span>
 						            <span>
 							            |&nbsp;&nbsp;&nbsp;&nbsp;<a href="News&amp;Media.html">新闻中心</a>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -103,7 +103,7 @@
 					</nav>
 				</header>
 
-                <div class="collapse navbar-collapse fb-parent fb-row fb-j-end fb-ai-center fb-sm-66" id="site-menu" style="padding-right:900px !important">
+                <div class="collapse navbar-collapse fb-parent fb-row fb-j-end fb-ai-center fb-sm-66 nnit-menu" id="site-menu">
 							 	<portal:SiteMenu id="SiteMenu1" runat="server" MenuSkinId="MainMenu" UseFlexMenu="true" />
 								<%-- Below is an optional cart-link that sits by the menu, but only works if the webstore add-on is installed --%>
 								<%-- <span class="flex-cart-inline">
