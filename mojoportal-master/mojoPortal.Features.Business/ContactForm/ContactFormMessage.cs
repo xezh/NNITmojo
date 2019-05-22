@@ -331,6 +331,15 @@ namespace mojoPortal.Business
             return LoadListFromReader(reader);
         }
 
+        /// <summary>
+        /// NNIT - check if user exist by IP
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <returns></returns>
+        public static bool isExistUserByIP(string ip)
+        {
+            return DBContactFormMessage.isExistUserbyIP(ip);
+        }
 
 
 

@@ -322,6 +322,40 @@ namespace mojoPortal.Data
             //    rowGuid);
         }
 
+        /// <summary>
+        /// To check if user exist by IP
+        /// </summary>
+        /// <param name="IP"></param>
+        /// <returns></returns>
+        public static Boolean isExistUserbyIP(String IP)
+        {
+            StringBuilder sqlCommand = new StringBuilder();
+            sqlCommand.Append("SELECT  Count(*) ");
+            sqlCommand.Append("FROM	mp_ContactFormMessage ");
+            sqlCommand.Append("WHERE CreatedFromIpAddress = ?CreatedFromIpAddress ");
+            sqlCommand.Append(";");
+
+            MySqlParameter[] arParams = new MySqlParameter[1];
+
+            arParams[0] = new MySqlParameter("?CreatedFromIpAddress", MySqlDbType.VarChar, 255);
+            arParams[0].Direction = ParameterDirection.Input;
+            arParams[0].Value = IP;
+
+            int cnt =  Convert.ToInt32(MySqlHelper.ExecuteScalar(
+                ConnectionString.GetReadConnectionString(),
+                sqlCommand.ToString(),
+                arParams));
+
+            if (cnt > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         ///// <summary>
         ///// Gets an IDataReader with all rows in the mp_ContactFormMessage table.
         ///// </summary>

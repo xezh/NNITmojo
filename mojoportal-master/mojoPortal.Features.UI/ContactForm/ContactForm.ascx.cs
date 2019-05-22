@@ -24,6 +24,15 @@ namespace mojoPortal.Web.ContactUI
 
 		protected override void OnInit(EventArgs e)
 		{
+            // NNIT - only comes from download will check if user has registered already.
+            // if user registered, redirect to download page directly
+            if (checkDownloadRegisterPage())
+            {
+                if (CheckRegisterUser())
+                {
+                    Page.Response.Redirect("/download");
+                }
+            }
 			base.OnInit(e);
 			Load += Page_Load;
 			btnSend.Click += btnSend_Click;
@@ -211,6 +220,13 @@ namespace mojoPortal.Web.ContactUI
 
 			btnSend.Text = ContactFormResources.ContactFormSendButtonLabel;
 			btnSend.Enabled = true;
+            // NNIT - if comes from registerdown page, redirect to download page.
+            
+            if (checkDownloadRegisterPage())
+            {
+                Page.Response.Redirect("/download");
+            }
+            
 		}
 
 
@@ -355,5 +371,31 @@ namespace mojoPortal.Web.ContactUI
 				basePage.ScriptConfig.IncludeColorBox = true;
 			}
 		}
+
+        /// <summary>
+        /// NNIT function - check if the user IP has been register already
+        /// </summary>
+        /// <returns></returns>
+        private bool CheckRegisterUser()
+        {
+            // get IP address
+            String ip = SiteUtils.GetIP4Address();
+            bool isExist = ContactFormMessage.isExistUserByIP(ip);
+            return isExist;
+        }
+
+        /// <summary>
+        /// NNIT function - check if this page comes from register download page
+        /// </summary>
+        /// <returns></returns>
+        private bool checkDownloadRegisterPage()
+        {
+            string url = Page.Request.RawUrl;
+            if (url != string.Empty && url.ToLower().Contains("registerdownload"))
+            {
+                return true;
+            }
+            return false;
+        }
 	}
 }
