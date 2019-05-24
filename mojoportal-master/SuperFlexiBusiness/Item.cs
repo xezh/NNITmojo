@@ -205,8 +205,9 @@ namespace SuperFlexiBusiness
                 sortOrder,
                 createdUtc,
                 lastModUtc,
-				viewRoles,
-				editRoles);
+                viewRoles,
+                editRoles);
+
 
             this.itemID = newID;
 
@@ -371,8 +372,8 @@ namespace SuperFlexiBusiness
                     item.sortOrder = Convert.ToInt32(reader["SortOrder"]);
                     item.createdUtc = Convert.ToDateTime(reader["CreatedUtc"]);
                     item.lastModUtc = Convert.ToDateTime(reader["LastModUtc"]);
-					item.viewRoles = reader["ViewRoles"].ToString();
-					item.editRoles = reader["EditRoles"].ToString();
+					//item.viewRoles = reader["ViewRoles"].ToString();
+					//item.editRoles = reader["EditRoles"].ToString();
 					// Not all methods will use TotalRows but there is no sense in having an extra method to load the reader
 					// so, we'll catch the error and do nothing with it because we are expecting it
 					// the if statement should keep any problems at bay but we still use try/catch in case someone inadvertently 

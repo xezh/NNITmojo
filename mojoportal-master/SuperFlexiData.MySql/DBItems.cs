@@ -43,7 +43,8 @@ namespace SuperFlexiData
 					CreatedUtc,
 					LastModUtc, 
 					ViewRoles, 
-					EditRoles) 
+					EditRoles,
+                    ItemID) 
 				VALUES (?ItemGuid, 
 					?SiteGuid,
 					?FeatureGuid, 
@@ -54,7 +55,8 @@ namespace SuperFlexiData
 					?CreatedUtc, 
 					?LastModUtc, 
 					?ViewRoles, 
-					?EditRoles);
+					?EditRoles,
+                    ?ItemID);
 				SELECT LAST_INSERT_ID();";
             var sqlParams = new List<MySqlParameter>
             {
@@ -68,8 +70,64 @@ namespace SuperFlexiData
                 new MySqlParameter("?CreatedUtc", MySqlDbType.DateTime) { Direction = ParameterDirection.Input, Value = createdUtc },
                 new MySqlParameter("?LastModUtc", MySqlDbType.DateTime) { Direction = ParameterDirection.Input, Value = lastModUtc },
 				new MySqlParameter("?ViewRoles", MySqlDbType.VarChar) { Direction = ParameterDirection.Input, Value = viewRoles },
-				new MySqlParameter("?EditRoles", MySqlDbType.VarChar) { Direction = ParameterDirection.Input, Value = editRoles }
-			};
+				new MySqlParameter("?EditRoles", MySqlDbType.VarChar) { Direction = ParameterDirection.Input, Value = editRoles },
+                new MySqlParameter("?ItemID", MySqlDbType.Int32) { Direction = ParameterDirection.Input, Value = 0 }
+            };
+
+            return Convert.ToInt32(MySqlHelper.ExecuteScalar(
+                ConnectionString.GetWriteConnectionString(),
+                sqlCommand,
+                sqlParams.ToArray()).ToString());
+        }
+
+        public static int CreateNew(
+            Guid siteGuid,
+            Guid featureGuid,
+            Guid moduleGuid,
+            int moduleID,
+            Guid definitionGuid,
+            Guid itemGuid,
+            int sortOrder,
+            DateTime createdUtc,
+            DateTime lastModUtc,
+            int itemID)
+        {
+            string sqlCommand = @"
+				INSERT INTO i7_sflexi_items 
+					(ItemGuid, 
+					SiteGuid, 
+					FeatureGuid, 
+					ModuleGuid, 
+					ModuleID, 
+					DefinitionGuid, 
+					SortOrder, 
+					CreatedUtc,
+					LastModUtc,
+                    ItemID) 
+				VALUES (?ItemGuid, 
+					?SiteGuid,
+					?FeatureGuid, 
+					?ModuleGuid, 
+					?ModuleID, 
+					?DefinitionGuid, 
+					?SortOrder, 
+					?CreatedUtc, 
+					?LastModUtc, 
+                    ?ItemID);
+				SELECT LAST_INSERT_ID();";
+            var sqlParams = new List<MySqlParameter>
+            {
+                new MySqlParameter("?ItemGuid", MySqlDbType.Guid) { Direction = ParameterDirection.Input, Value = itemGuid },
+                new MySqlParameter("?SiteGuid", MySqlDbType.Guid) { Direction = ParameterDirection.Input, Value = siteGuid },
+                new MySqlParameter("?FeatureGuid", MySqlDbType.Guid) { Direction = ParameterDirection.Input, Value = featureGuid },
+                new MySqlParameter("?ModuleGuid", MySqlDbType.Guid) { Direction = ParameterDirection.Input, Value = moduleGuid },
+                new MySqlParameter("?ModuleID", MySqlDbType.Int32) { Direction = ParameterDirection.Input, Value = moduleID },
+                new MySqlParameter("?DefinitionGuid", MySqlDbType.Guid) { Direction = ParameterDirection.Input, Value = definitionGuid },
+                new MySqlParameter("?SortOrder", MySqlDbType.Int32) { Direction = ParameterDirection.Input, Value = sortOrder },
+                new MySqlParameter("?CreatedUtc", MySqlDbType.DateTime) { Direction = ParameterDirection.Input, Value = createdUtc },
+                new MySqlParameter("?LastModUtc", MySqlDbType.DateTime) { Direction = ParameterDirection.Input, Value = lastModUtc },
+                new MySqlParameter("?ItemID", MySqlDbType.Int32) { Direction = ParameterDirection.Input, Value = itemID }
+            };
 
             return Convert.ToInt32(MySqlHelper.ExecuteScalar(
                 ConnectionString.GetWriteConnectionString(),
